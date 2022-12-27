@@ -30,10 +30,18 @@ function createGalleryCards(images) {
 function onPalletContainerClick(evt) {
   evt.preventDefault();
 
-  const isGalleryImageEl = evt.target.classList.contains("gallery__link");
+  const isGalleryImageEl = evt.target.classList.contains("gallery__image");
+
   if (!isGalleryImageEl) {
     return;
   }
+
+  const instance = basicLightbox.create(`
+    <img src="assets/images/image.png" width="800" height="600">
+`);
+
+  instance.show();
+
   console.log("evt.target", evt.target);
 }
 
@@ -45,5 +53,3 @@ console.log(galleryItems);
 // 	<h1>Dynamic Content</h1>
 // 	<p>You can set the content of the lightbox with JS.</p>
 // `);
-
-// instance.show();
