@@ -2,9 +2,9 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const palletContainerImg = document.querySelector(".gallery");
-const curdsMarcup = createGalleryCards(galleryItems);
+const cardsMarcup = createGalleryCards(galleryItems);
 
-palletContainerImg.insertAdjacentHTML("beforeend", curdsMarcup);
+palletContainerImg.insertAdjacentHTML("beforeend", cardsMarcup);
 
 palletContainerImg.addEventListener("click", onPalletContainerClick);
 
@@ -28,10 +28,22 @@ function createGalleryCards(images) {
 }
 
 function onPalletContainerClick(evt) {
-  if (!evt.target.classList.contains('gallery__image')) {
+  evt.preventDefault();
+
+  const isGalleryImageEl = evt.target.classList.contains("gallery__link");
+  if (!isGalleryImageEl) {
     return;
   }
-  console.log('evt.target', evt.target);
+  console.log("evt.target", evt.target);
 }
 
 console.log(galleryItems);
+
+// console.log(basicLightbox);
+
+// const instance = basicLightbox.create(`
+// 	<h1>Dynamic Content</h1>
+// 	<p>You can set the content of the lightbox with JS.</p>
+// `);
+
+// instance.show();
