@@ -12,13 +12,15 @@ function createGalleryCards(images) {
   return images
     .map(({ preview, original, description }) => {
       return `
-            <a class="gallery__item" href="${original}">
-              <img
-                class="gallery__image"
-                src="${preview}"
-                alt="${description}"
-              />
-            </a>
+            <li>
+                <a class="gallery__item" href="${original}">
+                    <img
+                    class="gallery__image"
+                    src="${preview}"
+                    alt="${description}"
+                    />
+                </a>
+            </li>
             `;
     })
     .join("");
@@ -27,9 +29,13 @@ function createGalleryCards(images) {
 function onPalletContainerClick(evt) {
   evt.preventDefault();
 
-  var lightbox = new SimpleLightbox('.gallery a');
+  var lightbox = new SimpleLightbox(".gallery a", {
+    navText: ["<", ">"],
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
 
-//   gallery.next();
+  gallery.next();
 }
 
 console.log(galleryItems);
